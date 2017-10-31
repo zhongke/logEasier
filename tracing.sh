@@ -101,7 +101,7 @@ then
             # sed -i '/Framed-IP-Address/{n;/Framed-IP-Address/n;d}' ${LOG_FILE}
             sed -i '/Framed-IP-Address/{n;/Framed-IP-Address/n;d}' ${LOG_FILE}
 
-            python3 log_fmt.py ${LOG_FILE}
+            python3 log.py ${LOG_FILE}
 
             /tsp/3rdParty/firefox-51.0.1/firefox ./log.html &
 
