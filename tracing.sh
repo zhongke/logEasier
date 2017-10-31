@@ -30,6 +30,7 @@ DOMAIN_FILE="domain.txt"
 if [ ! -f  ${DOMAIN_FILE} ]
 then
     find $SETUP_CBA_DIR -name \com_ericsson_sapc*.h |awk -F'/' '{print $NF}'  | cut -f1 -d"." > domain.txt
+    echo "Before capturing the trace, you can define the domain in the current directory in 'domain.txt'"
     exit 0;
 fi
 
@@ -101,6 +102,8 @@ then
             sed -i '/Framed-IP-Address/{n;/Framed-IP-Address/n;d}' ${LOG_FILE}
 
             python3 log_fmt.py ${LOG_FILE}
+
+            /tsp/3rdParty/firefox-51.0.1/firefox ./log.html &
 
 
         else
