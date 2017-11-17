@@ -119,7 +119,7 @@ then
 
             python3 log.py ${LOG_FILE}
 
-            /tsp/3rdParty/firefox-51.0.1/firefox ./log.html &
+            /tsp/3rdParty/firefox-53.0/firefox ./log.html &
 
 
         else
