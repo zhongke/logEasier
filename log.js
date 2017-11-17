@@ -512,7 +512,13 @@ function buildRow(log_info)
 
 function buildTd(log_info, fieldName)
 {
-    var log = '';
+    // Replace whitespace with "&nbsp;"
+    // NOTE: In order to get the better formatted view,
+    //       you MUST use equal-width font in your browser!!!
+    var log = "";
+    var message = log_info.detail.message.replace(/\t/g,"&nbsp;&nbsp;")
+                                         .replace(/\s{2}/g,"&nbsp;&nbsp;");
+
     switch(fieldName) {
     case v_index:
         log = "<td class='" + v_index     + "'>" + log_info.index             + "</td>";
@@ -551,7 +557,7 @@ function buildTd(log_info, fieldName)
         log = "<td class='" + v_codeLine  + "'>" + log_info.detail.codeLine   + "</td>";
         break;
     case v_message:
-        log = "<td class='" + v_message   + "'>" + log_info.detail.message    + "</td>";
+        log = "<td class='" + v_message   + "'>" + message                    + "</td>";
         break;
     }
         return log;

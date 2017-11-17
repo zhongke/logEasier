@@ -13,10 +13,11 @@
 # -------------------------------------------------------------
 
 
-if [ $# != 2 ]
+if [ $# != 2 ] && [ $# != 3 ]
 then
-    echo "ONLY TWO Args are required"
-    echo "USAGE: $0 <profile name> <action>"
+    echo "TWO or THREE Args are required"
+    echo "USAGE: $0 <profile name> <action> <log level>"
+    echo "if only 2 args, use default log level: 7"
     echo "e.g. : $0 ezhonke start"
     echo "e.g. : $0 ezhonke save"
     exit 1;
@@ -45,7 +46,15 @@ TRACE_CMD_FILTER=' -f "'
 DOMAIN_LIST=(`cat $DOMAIN_FILE | grep -E ^com`)
 DOMAIN_LIST_SIZE=${#DOMAIN_LIST[@]}
 DOMAIN_STR=""
-DOMAIN_DELIMETER='; '
+
+if [ $# == 3 ]
+then
+    DOMAIN_DELIMETER=", $3; "
+elif [ $# == 2 ]
+then
+    DOMAIN_DELIMETER="; "
+fi
+
 DOMAIN_END='"'
 
 CMD_DOMAIN=""
@@ -65,6 +74,11 @@ do
     if [[ ${i} -lt `expr ${DOMAIN_LIST_SIZE} - 1` ]]
     then
         DOMAIN_STR+=${DOMAIN_DELIMETER}
+    else
+        if [ $# == 3 ]
+        then
+            DOMAIN_STR+=", $3"
+        fi
     fi
 done
 
@@ -100,10 +114,12 @@ then
 
             # sed -i '/Framed-IP-Address/{n;/Framed-IP-Address/n;d}' ${LOG_FILE}
             sed -i '/Framed-IP-Address/{n;/Framed-IP-Address/n;d}' ${LOG_FILE}
+            sed -i '/3GPP-User-Location-Info/{n;/Framed-IP-Address/n;d}' ${LOG_FILE}
+
 
             python3 log.py ${LOG_FILE}
 
-            /tsp/3rdParty/firefox-51.0.1/firefox ./log.html &
+            /tsp/3rdParty/firefox-53.0/firefox ./log.html &
 
 
         else

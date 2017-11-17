@@ -18,6 +18,10 @@ button {
 }
 
 // TODO: How to format table with good looking
+table{
+    /* table-layout: fixed; */
+}
+
 .outline {
     border: 1;
     bordercolor: grey;
@@ -27,9 +31,12 @@ button {
 }
 
 td {
-    //width:1px;
-    //white-space:nowrap;
+    // width:1px;
+    /* white-space:nowrap; */
+    /* word-wrap:break-word; */
 }
+
+
 
 th {
     color: white;
