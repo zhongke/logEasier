@@ -114,7 +114,8 @@ then
 
             # sed -i '/Framed-IP-Address/{n;/Framed-IP-Address/n;d}' ${LOG_FILE}
             sed -i '/Framed-IP-Address/{n;/Framed-IP-Address/n;d}' ${LOG_FILE}
-            sed -i '/3GPP-User-Location-Info/{n;/Framed-IP-Address/n;d}' ${LOG_FILE}
+            sed -i '/3GPP-User-Location-Info/{n;/3GPP-User-Location-Info/n;d}' ${LOG_FILE}
+            sed -i '/3GPP-SGSN-Address/{n;/3GPP-SGSN-Address/n;d}' ${LOG_FILE}
 
 
             python3 log.py ${LOG_FILE}

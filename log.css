@@ -47,9 +47,11 @@ tr:hover {
     background-color: #f5f5f5;
 }
 
+/*
 td:nth-child(even) {
     background-color: #f2f2f2
 }
+*/
 
 
 .traffic {
@@ -66,7 +68,10 @@ td:nth-child(even) {
 
 .message {
     font-size   : 15px;
-    font-family : "Consolas";
+    /* font-family : "Courier"; */
+    /* font-family : "DejaVu San Mono"; */
+    /* font-family : "Consolas"; */
+    font-family : "Source Code Pro";
     white-space : wrap;
     word-wrap   : break-word;
 }
